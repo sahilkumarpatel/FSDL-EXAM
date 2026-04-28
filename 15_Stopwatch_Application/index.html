@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h3 span {
+            background-color: snow;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 2rem;
+            color: #000;
+        }
+
+        input {
+            font-weight: bold;
+            width: 250px;
+            padding: 10px;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 5px;
+            border-color: rgb(114, 122, 122);
+            color: white;
+            background-color: rgb(13, 129, 230);
+        }
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            border-color: rgb(114, 122, 122);
+            background-color: rgb(6, 54, 97);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h3><span>Stop Watch</span></h3>
+    <input type="text" id="numberInput" readonly value="00:00:00"><br>
+    <button id="startBtn" onclick="start()">Start</button>
+    <button id="stopBtn" onclick="stop()">Stop</button>
+    <button id="resetBtn" onclick="reset()">Reset</button>
+    <script>
+        let second = 0;
+        let time = null;
+        function updatedisplay()
+        {    
+            let hrs = Math.floor(second / 3600);
+            let mins = Math.floor((second % 3600) / 60);
+            let secs = second % 60;
+            hrs = hrs < 10 ? '0' + hrs : hrs;
+            mins = mins < 10 ? '0' + mins : mins;
+            secs = secs < 10 ? '0' + secs : secs;
+            document.getElementById('numberInput').value = hrs + ':' + mins + ':' + secs;
+        }
+        function start() {
+            if (time !== null) {
+                return;
+            }
+            time = setInterval(() => {
+                second++;
+                updatedisplay();
+            }, 1000);
+        }
+        
+        function stop() {
+            clearInterval(time);
+            time = null;
+        }
+        function reset() {
+            stop();
+            second = 0;
+            updatedisplay();
+        }
+    </script>
+</body>
+</html>

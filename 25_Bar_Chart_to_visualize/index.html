@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Chart</title>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+        canvas {
+            max-width: 500px;
+        }
+        .graph-container {
+            width: 100%;
+            height: 3000px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Students in Departments</h2>
+    <div class="graph-container">
+    <canvas id="myChart"></canvas>
+    </div>
+    <script>
+        let ctx = document.getElementById("myChart");
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Computer', 'Mechanical', 'Electrical', 'Civil'],
+                datasets: [{
+                    label: 'Number of Students',
+                    data: [80, 60, 70, 50],
+                    backgroundColor: ['blue', 'green', 'orange', 'red'],
+                    borderWidth: 1
+                }]
+            }
+        })
+    </script>
+</body>
+</html>

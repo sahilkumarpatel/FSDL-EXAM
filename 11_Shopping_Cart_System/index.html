@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .cart-items {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 200px;
+            background-color: rgb(240, 251, 247);
+            display: inline-block;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Shopping Cart</h2>
+    <div class="cart-items">
+        <h3>Laptop</h3>
+        <p>₹50000</p>
+        <button onclick="changeQty(0, -1)">-</button>
+        <span id="qty0">1</span>
+        <button onclick="changeQty(0, 1)">+</button>
+    </div>
+    <div class="cart-items">
+        <h3>Watch</h3>
+        <p>₹10000</p>
+        <button onclick="changeQty(1, -1)">-</button>
+        <span id="qty1">1</span>
+        <button onclick="changeQty(1, 1)">+</button>
+    </div>
+    <h2 id="total">Total: ₹60000</h2>
+    </div>
+    <script>
+        let prices = [50000, 10000];
+        let quantities = [1, 1];
+        function changeQty(index, change) {
+            quantities[index] += change;
+            if (quantities[index] < 1)
+            { 
+            quantities[index] = 1;
+            }
+            document.getElementById("qty" + index).textContent = quantities[index];
+            updateTotal();
+        }
+        function updateTotal() {
+            let total = 0;
+            for (let i=0;i<prices.length;i++) 
+            {
+                total += prices[i] * quantities[i];
+            }
+            document.getElementById("total").innerText = "Total: ₹" + total;
+        }
+    </script>
+</body>
+</html>

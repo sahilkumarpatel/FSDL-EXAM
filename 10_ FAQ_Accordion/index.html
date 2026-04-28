@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f8;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .accordion {
+            width: 60%;
+            margin: auto;
+        }
+        .item {
+            background: white;
+            margin: 10px 0;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+        .question {
+            padding: 15px;
+            cursor: pointer;
+            background: #007BFF;
+            color: white;
+        }
+        .answer {
+            display: none;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+        .active .answer {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>FAQ Accordion</h1>
+    <div class="accordion">
+        <div class="item">
+        <div class="question">What is HTML?</div>
+        <div class="answer">HTML is the standard markup language for web pages.</div>
+    </div>
+
+    <div class="item">
+        <div class="question">What is CSS?</div>
+        <div class="answer">CSS is used to style and layout web pages.</div>
+    </div>
+
+    <div class="item">
+        <div class="question">What is JavaScript?</div>
+        <div class="answer">JavaScript is used to make web pages interactive.</div>
+    </div>
+
+    <div class="item">
+        <div class="question">What is Full Stack Development?</div>
+        <div class="answer">It involves both frontend and backend development.</div>
+    </div>
+    </div>
+<script>
+    const questions = document.querySelectorAll(".question");
+
+    questions.forEach(q => {
+        q.addEventListener("click", function () {
+            const currentItem = this.parentElement;
+
+            document.querySelectorAll(".item").forEach(item => {
+                if (item !== currentItem) {
+                    item.classList.remove("active");
+                }
+            });
+
+            currentItem.classList.toggle("active");
+        });
+    });
+</script>
+</body>
+</html>

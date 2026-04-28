@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f8;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 300px;
+            margin: auto;
+        }
+        li {
+            padding: 12px;
+            margin: 8px 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            cursor: move;
+            border-radius: 5px;
+        }
+        .dragging {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Drag and Drop</h1>
+    <ul id="list">
+        <li draggable="true">Item 1</li>
+        <li draggable="true">Item 2</li>
+        <li draggable="true">Item 3</li>
+    </ul>
+    <script>
+        const list = document.getElementById('list');
+        let draggedItem = null;
+
+        const items = document.querySelectorAll('#list li');
+        items.forEach(item => {
+            item.addEventListener('dragstart', function()
+            {
+                draggedItem = this;
+                this.classList.add("dragging");
+            });
+            item.addEventListener('dragend',function(){
+                this.classList.remove("dragging");
+                
+            });
+            item.addEventListener('dragover', function(e){
+                e.preventDefault();
+            });
+
+            item.addEventListener('drop', function() {
+                if(draggedItem !== this) {
+                    let temp = this.innerHTML;
+                    this.innerHTML = draggedItem.innerHTML;
+                    draggedItem.innerHTML = temp;
+                }
+            })
+
+
+        })
+    </script>
+</body>
+</html>

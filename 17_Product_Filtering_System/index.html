@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Filtering</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            background-color: rgb(230, 239, 236);
+        }
+        .buttons {
+            margin: 20px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: blue;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: large;
+        }
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .card {
+            border: 1px solid #faf4f4;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            width: 150px;
+            color: rgb(255, 255, 255);
+            background-color: rgb(205, 212, 219);
+        }
+    </style>
+</head>
+<body>
+    <h2>Product Filtering</h2>
+    <div class="buttons">
+        <button onclick="filterProducts('all')">All</button>
+        <button onclick="filterProducts('electronics')">Electronics</button>
+        <button onclick="filterProducts('clothing')">Clothing</button>
+    </div>
+    <div class="products">
+        <div class="card" data-category="electronics">
+            <img src="/Problem18/laptop.png" alt="laptop image" width="150px" height="120px">
+            <h4>Laptop</h4>
+        </div>
+        <div class="card" data-category="clothing">
+            <img src="/Problem18/watch.png" alt="laptop image" width="150px" height="120px">
+            <h4>T-Shirt</h4>
+        </div>
+        <div class="card" data-category="clothing">
+            <img src="/Problem18/laptop.png" alt="laptop image" width="150px" height="120px">
+            <h4>Jacket</h4>
+        </div>
+    </div>
+    <script>
+        function filterProducts(category) {
+            let items = document.querySelectorAll(".card");
+            items.forEach(item => {
+                if(category === 'all' || item.dataset.category === category)
+                {
+                    item.style.display = "block";
+                }
+                else
+                {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher</title>
+    <style>
+        body 
+        {
+            font-family: Arial;
+            transition: 0.2s;
+            text-align: center;
+            padding: 50px;
+        }
+        .light {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .dark {
+            background-color: #121212;
+            color:#ffffff;
+        }
+        button 
+        {
+            padding:10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Theme Switcher</h2>
+    <p>Please the button to switch theme</p>
+    <button onclick="toggleTheme()">Toggle Theme</button>
+    <script>
+        window.onload = function()
+        {
+            let savedTheme = localStorage.getItem("theme");
+            if(savedTheme)
+            {
+                document.body.className = savedTheme;
+            }
+            else
+            {
+                document.body.className = "light";
+            }
+        }
+        function toggleTheme()
+        {
+            let currentTheme = document.body.className
+            if(currentTheme === 'light')
+            {
+                document.body.className = "dark";
+                localStorage.setItem("theme","dark");
+            }
+            else
+            {
+                document.body.className = 'light';
+                localStorage.setItem("theme","light");
+            }
+        }
+    </script>
+</body>
+</html>

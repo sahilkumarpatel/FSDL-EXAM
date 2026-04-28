@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real -Time Profile Previewer</title>
+    <style>
+        body
+        {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .form-container{
+            background: white;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .profile-card {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .profile-card {
+            text-align: center;
+        }
+
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .email {
+            color: gray;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Input Form -->
+    <div class="form-container">
+        <h2>Enter Profile Details</h2>
+        <input type="text" id="name" placeholder="Enter your name" oninput="updateProfile()">
+        <input type="email" id="email" placeholder="Enter your email" oninput="updateProfile()">
+        <textarea id="bio" placeholder="Enter your bio" oninput="updateProfile()"></textarea>
+    </div>
+    <!-- Profile Preview -->
+     <div class="profile-card">
+        <img src="/Problem4/neutral2.jpg" alt="Profile Image">
+        <div class="name" id="displayName">Your Name</div>
+        <div class="email" id="displayEmail">your@email.com</div>
+        <p id="displayBio">Your bio will appear here.</p>
+     </div>
+     <script>
+        function updateProfile() {
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let bio = document.getElementById('bio').value;
+
+            document.getElementById('displayName').innerHTML = name || 'Your Name';
+            document.getElementById('displayEmail').innerText = email || 'your@email.com';
+            document.getElementById('displayBio').innerText = bio || 'Your bio will';
+        }
+     </script>
+</body>
+</html>

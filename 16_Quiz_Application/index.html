@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .question {
+            margin: 15px auto;
+            background-color: chartreuse;
+            color: rgb(0, 0, 0);
+            border-radius: 5px;
+            padding: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            width: 100%;
+            font-weight: bolder;
+            border: none;
+            border-radius: 10px;
+            background-color: blue;
+            color: white;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Quiz Application</h2>
+    <form id="quizForm">
+        <div class="question">
+            <p>1. What is the capital of France?</p>
+            <input type="radio" name="q1" value="a">Kathmandu<br>
+            <input type="radio" name="q1" value="b">Paris<br>
+            <input type="radio" name="q1" value="c">London<br>
+            <input type="radio" name="q1" value="d">Berlin<br>
+        </div>
+        <div class="question">
+            <p>2. What is the largest planet in our solar system?</p>
+            <input type="radio" name="q2" value="a">Earth<br>
+            <input type="radio" name="q2" value="b">Mars<br>
+            <input type="radio" name="q2" value="c">Jupiter<br>
+            <input type="radio" name="q2" value="d">Saturn<br>
+        </div>
+        <div class="question">
+            <p>3. Which is a JavaScript keyword?</p>
+            <input type="radio" name="q3" value="a"> var<br>
+            <input type="radio" name="q3" value="b"> style<br>
+            <input type="radio" name="q3" value="c"> color<br>
+            <input type="radio" name="q3" value="d"> font<br>
+        </div>
+        <button type="button" onclick="calculateScore()">Submit</button>
+    </form>
+    <h3 id="result"></h3>
+    <script>
+        function calculateScore() {
+            let score = 0;
+            let answers = {
+                q1: 'b',
+                q2: 'c',
+                q3: 'a'
+            };
+            let form = document.getElementById('quizForm');
+            for (let q in answers) {
+                if(form[q].value === answers[q]) {
+                    score++;
+                }
+            }
+            document.getElementById('result').innerText = `Your score is: ${score}/3`;
+        }
+    </script>
+</body>
+</html>

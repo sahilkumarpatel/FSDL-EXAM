@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Gallery with Category Filtering</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="gallery-app">
+    <h1>Image Gallery</h1>
+    <p class="subtitle">Filter images by category</p>
+
+    <section class="filter-buttons" aria-label="Gallery categories">
+      <button class="filter-btn active" data-filter="all" type="button">All</button>
+      <button class="filter-btn" data-filter="nature" type="button">Nature</button>
+      <button class="filter-btn" data-filter="city" type="button">City</button>
+      <button class="filter-btn" data-filter="animals" type="button">Animals</button>
+    </section>
+
+    <section class="gallery-grid" id="galleryGrid" aria-live="polite">
+      <figure class="gallery-item" data-category="nature">
+        <img src="images/nature-1.svg" alt="Green mountain view" />
+        <figcaption>Nature 1</figcaption>
+      </figure>
+
+      <figure class="gallery-item" data-category="city">
+        <img src="images/city-1.svg" alt="City skyline" />
+        <figcaption>City 1</figcaption>
+      </figure>
+
+      <figure class="gallery-item" data-category="animals">
+        <img src="images/animal-1.svg" alt="Cute animal illustration" />
+        <figcaption>Animal 1</figcaption>
+      </figure>
+
+      <figure class="gallery-item" data-category="nature">
+        <img src="images/nature-2.svg" alt="River in forest" />
+        <figcaption>Nature 2</figcaption>
+      </figure>
+
+      <figure class="gallery-item" data-category="city">
+        <img src="images/city-2.svg" alt="City road at night" />
+        <figcaption>City 2</figcaption>
+      </figure>
+
+      <figure class="gallery-item" data-category="animals">
+        <img src="images/animal-2.svg" alt="Animal in grass" />
+        <figcaption>Animal 2</figcaption>
+      </figure>
+    </section>
+
+    <p id="emptyState" class="empty-state" hidden>No images found in this category.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

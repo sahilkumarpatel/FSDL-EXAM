@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboardd</title>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Times New Roman;
+            text-align: center;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        canvas {
+            max-width: 300px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h3>Weather Dashboard</h3>
+    <div class="chart-container">
+        <canvas id="lineChart"></canvas>
+        <canvas id="barChart"></canvas>
+        <canvas id="pieChart"></canvas>
+    </div>
+    <script>
+        let lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                datasets: [{
+                    label: "Temperature Trend",
+                    data: [10,20,30,40,50,60,70],
+                    borderColor: 'blue',
+                    fill: false
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Weekly Line Chart'
+                    }
+                }
+            }
+        });
+
+        let barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type:'bar',
+            data: {
+            labels: ['Mon','Tues','Wed','Thurs','Fri','Sat','Sun'],
+            datasets:[{
+                label: "Weekly Bar Chart",
+                data:[10,20,30,40,50,60,70,],
+                backgroundColor:['red','orange','green','yellow','blue','pink','brown'],
+                borderWidth:1
+            }]
+        },
+        options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Weekly Bar Chart'
+                    }
+                }
+            }
+        })
+
+        let pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type:'pie',
+            data: {
+            labels: ['Mon','Tues','Wed','Thurs','Fri','Sat','Sun'],
+            datasets:[{
+                data:[10,20,30,40,50,60,70,],
+                backgroundColor:['red','orange','green','yellow','blue','pink','brown'],
+                borderWidth:1
+            }]
+        },
+        options:{
+            plugins:{
+                title:{
+                    display:true,
+                    text:"Pie Chart For Weekly Data"
+                }
+            }
+        }
+        })
+    </script>
+</body>
+</html>

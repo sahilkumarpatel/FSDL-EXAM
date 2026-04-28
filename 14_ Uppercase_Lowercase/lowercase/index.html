@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: aliceblue;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        #reverseBtn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        #upperBtn {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        }
+        #lowerBtn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        #lengthBtn {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h3>String Operation</h3>
+    <input type="text" id="stringInput" placeholder="Enter a string"><br><br>
+    <button id="reverseBtn" onclick="reverseString()">Reverse String</button>
+    <button id="upperBtn" onclick="upperCase()">Convert to Upper Case</button>
+    <button id="lowerBtn" onclick="lowerCase()">Convert to Lower Case</button>
+    <button id="lengthBtn" onclick="calculateLength()">Length Finder</button>
+    <p id="result"></p>
+    <script>
+        function reverseString() {
+            let str = document.getElementById("stringInput").value;
+            let reversed = str.split("").reverse().join("");
+            document.getElementById("result").innerText = "Reversed String: " + reversed;
+        }
+
+        function upperCase() {
+            let str = document.getElementById("stringInput").value;
+            let upper = str.toUpperCase();
+            document.getElementById("result").innerText = "Upper Case: " + upper;
+        }
+
+        function lowerCase() {
+            let str = document.getElementById("stringInput").value;
+            let lower = str.toLowerCase();
+            document.getElementById("result").innerText = "Lower Case: " + lower;
+        }
+        function calculateLength() {
+            let str = document.getElementById("stringInput").value;
+            let length = str.length;
+            document.getElementById("result").innerText = "Length: " + length;
+        }
+    </script>
+</body>
+</html>

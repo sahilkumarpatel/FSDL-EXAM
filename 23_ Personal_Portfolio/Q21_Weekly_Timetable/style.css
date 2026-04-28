@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Times New Roman", Georgia, serif;
+  background: #e9edf2;
+  padding: 20px;
+}
+
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #a8a8a8;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  padding: 14px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #404952;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1240px;
+  table-layout: fixed;
+}
+
+th,
+td {
+  border: 1px solid #7c7c7c;
+  padding: 10px 6px;
+  text-align: center;
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 1.25;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+thead th {
+  background: #f2e9cf;
+  color: #101010;
+  font-weight: bold;
+}
+
+tbody th {
+  background: #efefef;
+  font-size: 16px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.theory {
+  background: #d8e3f6;
+  font-weight: bold;
+}
+
+.lab {
+  background: #d9eed3;
+  font-weight: bold;
+}
+
+.project {
+  background: #9de1be;
+  font-weight: bold;
+}
+
+.elective {
+  background: #efd9ad;
+  font-weight: bold;
+}
+
+.practical {
+  background: #f4cfa4;
+  font-weight: bold;
+}
+
+.free {
+  background: #f4f4f4;
+}
+
+.break {
+  background: #e5e5e5;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.8px;
+  vertical-align: middle;
+  font-size: 12px;
+  min-width: 38px;
+}
+
+.break.short {
+  background: #ececec;
+}
+
+@media (max-width: 820px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  th,
+  td {
+    font-size: 12px;
+    padding: 6px 4px;
+  }
+
+  tbody th {
+    font-size: 14px;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff;
+    padding: 0;
+  }
+
+  .page {
+    box-shadow: none;
+    border: 1px solid #000000;
+  }
+
+  table,
+  th,
+  td {
+    border-color: #000000;
+  }
+
+  .free {
+  font-weight: bold;
+  }
+}

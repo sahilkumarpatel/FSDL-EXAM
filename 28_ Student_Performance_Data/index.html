@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Dashboard</title>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+        .charts {
+            display: flex;
+            flex-wrap: wrap;
+             justify-content: center;
+            gap: 20px;
+        }
+        canvas {
+            max-width: 300px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student Performance Dashboard</h2>
+
+<div class="charts">
+    <canvas id="marksChart"></canvas>
+    <canvas id="attendanceChart"></canvas>
+    <canvas id="progressChart"></canvas>
+</div>
+
+<script>
+    // MARKS (Bar Chart)
+    new Chart(document.getElementById("marksChart"), {
+        type: 'bar',
+        data: {
+            labels: ['Math', 'Science', 'English', 'CS'],
+            datasets: [{
+                label: 'Marks',
+                data: [85, 78, 90, 88],
+                backgroundColor: ['blue','green','orange','red']
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Subject-wise Marks'
+                }
+            }
+        }
+    });
+
+    // ATTENDANCE (Pie Chart)
+    new Chart(document.getElementById("attendanceChart"), {
+        type: 'pie',
+        data: {
+            labels: ['Present', 'Absent'],
+            datasets: [{
+                data: [85, 15],
+                backgroundColor: ['green','red']
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Attendance'
+                }
+            }
+        }
+    });
+
+    // PROGRESS (Line Chart)
+    new Chart(document.getElementById("progressChart"), {
+        type: 'line',
+        data: {
+            labels: ['Test1','Test2','Test3','Test4'],
+            datasets: [{
+                label: 'Progress',
+                data: [60, 70, 80, 90],
+                borderColor: 'blue',
+                fill: false
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Performance Progress'
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

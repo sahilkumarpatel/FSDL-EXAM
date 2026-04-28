@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Glossary of HTML Formatting Tags</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #8fabe9;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        #search {
+            width: 60%;
+            padding : 10px;
+            margin: 20px auto;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: white;
+
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0e0e0e;
+            color: white;
+        }
+        tr:hover {
+            background-color : #f1f1f1
+        }
+        .tags {
+            font-family: 'Times New Roman', Times, serif;
+            color: #007BFF;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Digital Glossary of HTML Formatting Tags</h1>
+    <input type="text" id ="search" placeholder="Search for a tag..." onkeyup="filterTable()">
+    <!-- Search functionality will be implemented here -->
+     <table id="glossary">
+        <thead>
+            <tr>
+                <th>Tag</th>
+                <th>Description</th>
+                <th>Example Output</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tags">&lt;b&gt;</td>
+                <td>Bold text</td>
+                <td><b>Bold text</b></td>
+            </tr>
+            <tr>
+                <td class="tags">&lt;i&gt;</td>
+                <td>Italic text</td>
+                <td><i>Italic text</i></td>
+            </tr>
+                <tr>
+                    <td class="tags">&lt;u&gt;</td>
+                    <td>Underlined text</td>
+                    <td><u>Underlined text</u></td>
+                </tr>
+                 <tr>
+                    <td class="tags">&lt;em&gt;</td>
+                    <td>Emphasized text</td>
+                    <td><em>Emphasized text</em></td>       
+                </tr>
+                 <tr>
+                    <td class="tags">&lt;strong&gt;</td>
+                    <td>Strongly emphasized text</td>
+                    <td><strong>Strongly emphasized text</strong></td>  
+                </tr>
+                 <tr>
+                    <td class="tags">&lt;mark&gt;</td>
+                    <td>Highlighted text</td>
+                    <td><mark>Highlighted text</mark></td>
+                </tr>
+                 <tr>
+                    <td class="tags">&lt;del&gt;</td>
+                    <td>Deleted text</td>
+                    <td><del>Deleted text</del></td>
+                </tr>
+                 <tr>   
+                    <td class="tags">&lt;ins&gt;</td>
+                    <td>Inserted text</td>
+                    <td><ins>Inserted text</ins></td>       
+                </tr>
+                 <tr>
+                    <td class="tags">&lt;sub&gt;</td>
+                    <td>Subscript text</td>
+                    <td>H<sub>2</sub>O</td>             
+                </tr>
+                 <tr>
+                    <td class="tags">&lt;sup&gt;</td>
+                    <td>Superscript text</td>
+                    <td>10<sup>2</sup></td>
+                </tr>
+                 <tr>
+                    <td class="tags">&lt;code&gt;</td>
+                    <td>Inline code</td>
+                    <td><code>&lt;code&gt;Example&lt;/code&gt;</code></td>
+                </tr>    
+        </tbody>
+     </table>
+     <script>
+        function filterTable() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let table = document.getElementById("glossary");
+            let rows = table.getElementsByTagName("tr");
+            for (let i=1;i<rows.length;i++) {
+                let rowText = rows[i].innerText.toLowerCase();
+                if(rowText.includes(input)) {
+                    rows[i].style.display = "";
+                }
+                else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

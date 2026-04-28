@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Times New Roman;
+            background-color: #f4f6f8;
+            margin: 20;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .toggle-contaniner {
+            margin: 20px;
+        }
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 200px;
+        }
+        .card h3 {
+            margin-bottom: 10px;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .price {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #007BFF;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pricing Plans</h1>
+    <div class="toggle-container">
+        <label>
+            <input type="checkbox" id="toggle" onchange="updatePrices()">
+            Toggle Monthly/Yearly
+        </label>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h3>Basic</h3>
+            <div class="price" id="basicPrice">&#8377;500/mo</div>
+            <button>Choose Plan</button>
+        </div>
+
+        <div class="card">
+            <h3>Pro</h3>
+            <div class="price" id="proPrice">&#8377;1000/mo</div>
+            <button>Choose Plan</button>
+        </div>
+
+        <div class="card">
+            <h3>Premium</h3>
+            <div class="price" id="premiumPrice">&#8377;1500/mo</div>
+            <button>Choose Plan</button>
+        </div>
+    </div>
+    <script>
+        function updatePrices() {
+            let isYearly = document.getElementById('toggle').checked;
+
+            if(isYearly) {
+                document.getElementById('basicPrice').innerText = "₹6000/yr";
+                document.getElementById('proPrice').innerText = "₹12000/yr";
+                document.getElementById('premiumPrice').innerText = "₹18000/yr";
+            }
+            else {
+                document.getElementById('basicPrice').innerText = "₹500/mo";
+                document.getElementById('proPrice').innerText = "₹1000/mo";
+                document.getElementById('premiumPrice').innerText = "₹1500/mo";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f8;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        /* Zoom effect */
+        .image-container:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+
+        .image-container:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Photo Gallery</h1>
+
+<div class="gallery">
+
+    <div class="image-container">
+        <img src="https://via.placeholder.com/300" alt="Image 1">
+        <div class="overlay">Image 1</div>
+    </div>
+
+    <div class="image-container">
+        <img src="https://via.placeholder.com/300" alt="Image 2">
+        <div class="overlay">Image 2</div>
+    </div>
+
+    <div class="image-container">
+        <img src="https://via.placeholder.com/300" alt="Image 3">
+        <div class="overlay">Image 3</div>
+    </div>
+
+    <div class="image-container">
+        <img src="https://via.placeholder.com/300" alt="Image 4">
+        <div class="overlay">Image 4</div>
+    </div>
+
+    <div class="image-container">
+        <img src="https://via.placeholder.com/300" alt="Image 5">
+        <div class="overlay">Image 5</div>
+    </div>
+
+    <div class="image-container">
+        <img src="https://via.placeholder.com/300" alt="Image 6">
+        <div class="overlay">Image 6</div>
+    </div>
+
+</div>
+
+</body>
+</html>
