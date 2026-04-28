@@ -3,88 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Gallery</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f1ea;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color:rgb(83, 93, 93)
-        }
-        .gallery {
-            display: flex;
-            flex-wrap:wrap;
-            justify-content: center;
-            gap:20px;
-        }
-        .card {
-            background: white;
-            width:220px;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .card img 
-        {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .price {
-            color: #007BFF;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        button 
-        {
-            padding: 8px 15px;
-            border: none;
-            background-color: #28a745;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
+        :root{--card-bg:#fff;--accent:#ff6f61}
+        body{font-family:Arial,Helvetica,sans-serif;background:#f7f7f7;margin:0;padding:18px}
+        .header{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto 18px}
+        h1{margin:0;color:#333}
+        .cart{font-weight:700;color:#fff;background:var(--accent);padding:8px 12px;border-radius:20px}
+        .cart span{margin-left:8px}
+        .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1100px;margin:0 auto}
+        .card{background:var(--card-bg);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-align:left}
+        .card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:8px}
+        .card.small img{height:100px}
+        .card.small h3{font-size:14px}
+        .card.small .price{font-size:14px}
+        .card.small .desc{font-size:12px}
+        .card h3{margin:6px 0 4px;font-size:16px}
+        .price{color:#1a73e8;font-weight:700;margin:6px 0}
+        .desc{font-size:13px;color:#555;margin-bottom:8px}
+        .buy{display:inline-block;padding:8px 12px;background:#28a745;color:#fff;border:none;border-radius:6px;cursor:pointer}
+        .buy:hover{background:#218838}
+        .toast{position:fixed;right:18px;bottom:18px;background:#323232;color:#fff;padding:8px 12px;border-radius:6px;opacity:0.95}
     </style>
 </head>
 <body>
-    <h1>Product Gallery</h1>
+    <div class="header">
+        <h1>Product Gallery</h1>
+        <div class="cart">Cart: <strong id="cartCount">0</strong><span>items</span></div>
+    </div>
+
     <div class="gallery" id="productContainer"></div>
+
     <script>
+        // Sample JSON dataset (could be fetched from server)
         const products = [
-            {name: "Laptop", price:"₹50000",image:"/Problem6/fear3.jpg"},
-            {name: "SmartPhone", price:"₹20000",image:"/Problem6/sad1.jpg"},
-            {name: "Watch", price:"₹10000",image:"/Problem6/surprise1.jpg"},
-            {name: "HeadPhones", price:"₹5000",image:"/Problem6/happy.jpg"}
-            ];
-            function displayProducts() {
-                let container = document.getElementById("productContainer");
-                products.forEach(product => {
-                    let card = document.createElement("div");
-                    card.className = "card";
-                    card.innerHTML = `
-                        <img src="${product.image}" alt="${product.name}">
-                        <h3>${product.name}</h3>
-                        <p>${product.price}</p>
-                        <button onclick="addToCart('${product.name}')">Add to Cart</button>
-                    `;
-                    container.appendChild(card);
-                });
-                
+            {id:1,name:'Laptop',price:50000,img:'https://via.placeholder.com/400x250?text=Laptop',desc:'14" laptop, 8GB RAM'},
+            {id:2,name:'Smartphone',price:22000,img:'https://via.placeholder.com/400x250?text=Smartphone',desc:'6.5" display, 128GB storage'},
+            {id:3,name:'Watch',price:3500,img:'https://via.placeholder.com/400x250?text=Watch',desc:'Water-resistant, 2yr battery'},
+            {id:4,name:'Headphones',price:1800,img:'https://via.placeholder.com/400x250?text=Headphones',desc:'Noise-cancelling, wireless'},
+            {id:5,name:'Camera',price:32000,img:'https://via.placeholder.com/400x250?text=Camera',desc:'24MP DSLR'},
+            {id:6,name:'Backpack',price:1200,img:'https://via.placeholder.com/400x250?text=Backpack',desc:'Waterproof, 20L capacity'}
+        ];
+
+        const container = document.getElementById('productContainer');
+        const cartCountEl = document.getElementById('cartCount');
+        let cartCount = 0;
+
+        // Render products as cards
+        function renderProducts(list) {
+            container.innerHTML = '';
+                list.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'card' + (p.id === 6 ? ' small' : '');
+                card.innerHTML = `
+                    <img src="${p.img}" alt="${p.name}">
+                    <h3>${p.name}</h3>
+                    <div class="price">₹${p.price}</div>
+                    <div class="desc">${p.desc}</div>
+                    <button class="buy" data-id="${p.id}">Buy Now</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Handle Buy Now clicks (event delegation)
+        container.addEventListener('click', e => {
+            if (e.target && e.target.matches('.buy')) {
+                const id = Number(e.target.dataset.id);
+                const product = products.find(x => x.id === id);
+                if (product) addToCart(product);
             }
-            function addToCart(name)
-                {
-                    alert(name + " added to cart!");
-                }
-            displayProducts();
+        });
+
+        function addToCart(product) {
+            cartCount += 1;
+            cartCountEl.textContent = cartCount;
+            showToast(`${product.name} added to cart`);
+        }
+
+        function showToast(message) {
+            const t = document.createElement('div');
+            t.className = 'toast';
+            t.textContent = message;
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 1500);
+        }
+
+        // init
+        renderProducts(products);
     </script>
 </body>
 </html>
