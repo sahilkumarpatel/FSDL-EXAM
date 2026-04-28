@@ -3,74 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Skill Bar Component</title>
     <style>
         body {
-            background-color: #f4f6f8;
-            font-family: Arial;
-            margin: 30px;
+            font-family: Arial, sans-serif;
+            padding: 20px;
         }
 
-        h1 {
-            text-align: center;
+        .box {
+            max-width: 500px;
         }
-        .skill-container {
-            margin: 20px auto;
-            width: 70%;
+
+        input,
+        button {
+            padding: 8px;
+            margin: 5px 0;
         }
-        .skill-name {
-            font-weight: bold;
-            margin-bottom: 5px;
+
+        .skill {
+            margin-top: 12px;
         }
-        .skill-bar {
-            background-color: #c2b9b9;
-            border-radius: 20px;
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .bar {
+            width: 100%;
+            height: 18px;
+            background: #ddd;
+            border-radius: 10px;
             overflow: hidden;
         }
-        .skill-fill {
-            background-color: #4CAF50;
-            height: 30px;
+
+        .fill {
+            height: 100%;
             width: 0;
-            line-height: 30px;
-            color: white;
-            text-align: right;
-            padding-right: 10px;
-            border-radius: 20px;
+            background: #4caf50;
         }
     </style>
 </head>
 <body>
-    <h1>Skill Bar Component</h1>
-    <div id="skills"></div>
+    <div class="box">
+        <h2>Skill Bar Component</h2>
+
+        <input type="text" id="skillName" placeholder="Skill name">
+        <input type="number" id="percent" placeholder="Percentage (0-100)">
+        <button onclick="addSkill()">Add Skill</button>
+
+        <div id="list"></div>
+    </div>
+
     <script>
-        function createSkillBar(skill, percentage) {
-            let container = document.createElement('div');
-            container.className = 'skill-container';
-
-            let name = document.createElement('div');
-            name.className = 'skill-name';
-            name.innerText = skill;
-
-            let bar = document.createElement('div');
-            bar.className = 'skill-bar';
-
-            let fill = document.createElement('div');
-            fill.className = 'skill-fill';
-            fill.style.width = percentage + '%';
-            fill.innerText = percentage + '%';
-
-            bar.appendChild(fill);
-            container.appendChild(name);
-            container.appendChild(bar);
-
-            document.getElementById('skills').appendChild(container);
+        // Reusable function: create one skill bar from name and percentage
+        function createSkillBar(name, percent) {
+            return `
+                <div class="skill">
+                    <div class="row">
+                        <span>${name}</span>
+                        <span>${percent}%</span>
+                    </div>
+                    <div class="bar">
+                        <div class="fill" style="width:${percent}%"></div>
+                    </div>
+                </div>
+            `;
         }
 
-        createSkillBar('HTML', 90);
-        createSkillBar('CSS', 80);
-        createSkillBar('JavaScript', 70);
-        createSkillBar('Python', 60);
-        createSkillBar('Java', 50);
+        function addSkill() {
+            const name = document.getElementById("skillName").value.trim();
+            const percent = Number(document.getElementById("percent").value);
+
+            if (!name || percent < 0 || percent > 100 || Number.isNaN(percent)) {
+                alert("Enter valid skill name and percentage (0-100)");
+                return;
+            }
+
+            document.getElementById("list").innerHTML += createSkillBar(name, percent);
+            document.getElementById("skillName").value = "";
+            document.getElementById("percent").value = "";
+        }
     </script>
 </body>
 </html>

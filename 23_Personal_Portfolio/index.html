@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head><style>
+  html{scroll-behavior:smooth;} 
+  body {font-family:sans-serif; margin:0; line-height:1.6; color:#333;}
+  nav {background:#222; padding:15px; position:sticky; top:0; text-align:center;}
+  nav a {color:#fff; text-decoration:none; margin:0 20px; font-weight:bold;}
+  nav a:hover {color:#007bff;}
+  section {padding:80px 20px; max-width:800px; margin:auto; text-align:center;}
+  #home {background:#f4f4f4; border-bottom:1px solid #ddd;}
+  .btn {display:inline-block; padding:10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px; margin-top:20px;}
+  .grid {display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-top:30px;}
+  .card {background:#f9f9f9; padding:20px; border:1px solid #ddd; width:200px; border-radius:5px;}
+</style></head>
+<body>
+  <nav>
+    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+  </nav>
+  
+  <section id="home">
+    <h1 style="font-size:3em; margin-bottom:10px;">Hello, I'm Alex</h1>
+    <p style="font-size:1.2em; color:#666;">A passionate Frontend Web Developer.</p>
+    <a href="#projects" class="btn">View My Work</a>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I specialize in building interactive and responsive websites. I love turning complex problems into simple, beautiful, and intuitive designs.</p>
+  </section>
+
+  <section id="skills" style="background:#f9f9f9; max-width:100%;">
+    <h2>My Skills</h2>
+    <div class="grid">
+      <div class="card"><h3>HTML5</h3><p>Semantic markup</p></div>
+      <div class="card"><h3>CSS3</h3><p>Flexbox & Grid</p></div>
+      <div class="card"><h3>JavaScript</h3><p>ES6+ & DOM</p></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Recent Projects</h2>
+    <ul style="text-align:left; display:inline-block;">
+      <li><b>Portfolio Website:</b> Personal showcase built with HTML/CSS.</li>
+      <li><b>Weather App:</b> JS app fetching API data.</li>
+      <li><b>E-Commerce UI:</b> Responsive product catalog.</li>
+    </ul>
+  </section>
+
+  <section id="contact" style="background:#222; color:#fff; max-width:100%;">
+    <h2>Get In Touch</h2>
+    <p>Interested in working together? Drop me a message.</p>
+    <p>Email: alex@example.com | Phone: (123) 456-7890</p>
+  </section>
+</body></html>

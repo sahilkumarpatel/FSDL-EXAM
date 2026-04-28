@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body{font-family:sans-serif; padding:20px; background:#fafafa;}
+    h2{text-align:center;}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(350px, 1fr)); gap:20px; max-width:900px; margin:auto;}
+    .chart-box{background:white; padding:20px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+  </style>
+</head>
+<body>
+  <h2>Student Performance Analytics</h2>
+  <div class="grid">
+    <div class="chart-box"><h3>Subject Marks</h3><canvas id="marks"></canvas></div>
+    <div class="chart-box"><h3>Overall Progress</h3><canvas id="progress"></canvas></div>
+  </div>
+  <script>
+    new Chart(document.getElementById('marks'), {
+      type: 'bar', 
+      data: {
+        labels: ['Math', 'Science', 'English', 'History', 'Art'], 
+        datasets: [{label:'Marks Out of 100', data:[88, 92, 75, 80, 95], backgroundColor:'#6f42c1'}]
+      }
+    });
+    
+    new Chart(document.getElementById('progress'), {
+      type: 'radar', 
+      data: {
+        labels: ['Attendance', 'Assignments', 'Exams', 'Participation', 'Discipline'],
+        datasets: [{
+          label: 'Student Score',
+          data: [90, 85, 88, 70, 95],
+          fill: true,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgb(54, 162, 235)',
+          pointBackgroundColor: 'rgb(54, 162, 235)'
+        }]
+      },
+      options: { elements: { line: { borderWidth: 3 } } }
+    });
+  </script>
+</body></html>

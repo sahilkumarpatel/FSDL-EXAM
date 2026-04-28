@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bar Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>body{font-family:sans-serif; text-align:center;} .chart-container{width:700px; max-width:90%; margin:40px auto;}</style>
+</head>
+<body>
+  <h2>Number of Students in Different Departments</h2>
+  <div class="chart-container"><canvas id="barChart"></canvas></div>
+  <script>
+    const ctx = document.getElementById('barChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: { 
+        labels: ['Computer Science', 'Information Tech', 'Mechanical', 'Civil', 'Electrical'], 
+        datasets: [{
+          label: 'Number of Students', 
+          data: [250, 180, 150, 120, 140], 
+          backgroundColor: ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8'],
+          borderWidth: 1
+        }]
+      },
+      options: { scales: { y: { beginAtZero: true } } }
+    });
+  </script>
+</body></html>

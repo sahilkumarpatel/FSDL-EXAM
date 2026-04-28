@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head><style>
+  body {font-family:sans-serif; background:#e9ecef; padding:40px 0; margin:0;}
+  .form-box {background:#fff; padding:30px; max-width:400px; margin:0 auto; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+  h2 {text-align:center; margin-top:0; color:#333;}
+  .field {margin-bottom:15px;}
+  label {display:block; margin-bottom:5px; font-weight:bold; color:#555;}
+  input, select, textarea {width:100%; padding:10px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;}
+  button {width:100%; padding:12px; background:#28a745; color:#fff; border:none; border-radius:4px; font-size:16px; cursor:pointer;}
+  button:hover {background:#218838;}
+</style></head>
+<body>
+  <div class="form-box">
+    <h2>Student Registration</h2>
+    <form onsubmit="return validateForm()">
+      <div class="field">
+        <label>Full Name</label>
+        <input type="text" id="fullName" pattern="[A-Za-z\s]+" title="Only alphabets and spaces are allowed" required>
+      </div>
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" id="email" pattern="^[a-zA-Z0-9._%+\-]+@(gmail\.com|pccoepune\.org)$" title="Email must end with @gmail.com or @pccoepune.org" required>
+      </div>
+      <div class="field">
+        <label>Gender</label>
+        <select required><option value="">Select...</option><option>Male</option><option>Female</option><option>Other</option></select>
+      </div>
+      <div class="field">
+        <label>Course</label>
+        <input type="text" placeholder="e.g. B.Tech Computer Engineering" required>
+      </div>
+      <div class="field">
+        <label>Address</label>
+        <textarea id="address" rows="3" required></textarea>
+      </div>
+      <button type="submit">Submit Registration</button>
+    </form>
+  </div>
+  <script>
+    function validateForm() {
+      let address = document.getElementById('address').value;
+      // Check if address is strictly alphanumeric (letters, numbers, and spaces)
+      if (!/^[A-Za-z0-9\s]+$/.test(address)) {
+        alert("Address must be alphanumeric only (no special characters like commas or periods).");
+        return false;
+      }
+      
+      alert('Registration Successful!');
+      return true; // Use return false if you want to prevent actual form submission
+    }
+  </script>
+</body></html>

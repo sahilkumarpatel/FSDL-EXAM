@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><style>
+  body{font-family:sans-serif; text-align:center; padding:20px;}
+  .controls {margin-bottom:30px;}
+  button {padding:10px 20px; margin:0 5px; cursor:pointer; background:#fff; border:2px solid #007bff; color:#007bff; border-radius:20px; font-weight:bold; transition:all 0.3s;}
+  button:hover, button.active {background:#007bff; color:#fff;}
+  .gallery {display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:15px; max-width:900px; margin:auto;}
+  .img-item {height:150px; background-size:cover; background-position:center; border-radius:8px; display:flex; align-items:flex-end; padding:10px; color:white; font-weight:bold; text-shadow:1px 1px 3px rgba(0,0,0,0.8); transition:transform 0.3s;}
+  .img-item:hover {transform:scale(1.05);}
+</style></head>
+<body>
+  <h2>Categorized Image Gallery</h2>
+  <div class="controls">
+    <button class="active" onclick="filter('all', this)">Show All</button>
+    <button onclick="filter('nature', this)">Nature</button>
+    <button onclick="filter('architecture', this)">Architecture</button>
+    <button onclick="filter('animals', this)">Animals</button>
+  </div>
+  <div class="gallery">
+    <div class="img-item nature" style="background-image:url('https://picsum.photos/id/1015/300/200')">Nature</div>
+    <div class="img-item architecture" style="background-image:url('https://picsum.photos/id/1021/300/200')">Architecture</div>
+    <div class="img-item animals" style="background-image:url('https://picsum.photos/id/1025/300/200')">Animals</div>
+    <div class="img-item nature" style="background-image:url('https://picsum.photos/id/1039/300/200')">Nature</div>
+    <div class="img-item architecture" style="background-image:url('https://picsum.photos/id/1040/300/200')">Architecture</div>
+    <div class="img-item animals" style="background-image:url('https://picsum.photos/id/1069/300/200')">Animals</div>
+  </div>
+  <script>
+    function filter(cat, btn) {
+      document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.img-item').forEach(img => {
+        if(cat === 'all' || img.classList.contains(cat)) {
+          img.style.display = 'flex';
+        } else {
+          img.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body></html>

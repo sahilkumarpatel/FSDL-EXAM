@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pie Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>body{font-family:sans-serif; text-align:center;} .chart-container{width:400px; max-width:90%; margin:40px auto;}</style>
+</head>
+<body>
+  <h2>Class Attendance Distribution</h2>
+  <div class="chart-container"><canvas id="pieChart"></canvas></div>
+  <script>
+    new Chart(document.getElementById('pieChart'), {
+      type: 'doughnut', // or 'pie'
+      data: { 
+        labels: ['Present (75%)', 'Absent (15%)', 'On Leave (10%)'], 
+        datasets: [{data: [75, 15, 10], backgroundColor: ['#28a745', '#dc3545', '#ffc107'], hoverOffset:4}] 
+      }
+    });
+  </script>
+</body></html>

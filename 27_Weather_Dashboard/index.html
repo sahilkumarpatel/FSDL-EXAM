@@ -1,99 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashboardd</title>
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            font-family: Times New Roman;
-            text-align: center;
-        }
-        .chart-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        canvas {
-            max-width: 300px;
-            margin: auto;
-        }
-    </style>
+  <title>Weather Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body{font-family:sans-serif; background:#f4f7f6; padding:20px;}
+    h2{text-align:center; color:#333;}
+    .dashboard{display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
+    .card{background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.05); width:400px;}
+  </style>
 </head>
 <body>
-    <h3>Weather Dashboard</h3>
-    <div class="chart-container">
-        <canvas id="lineChart"></canvas>
-        <canvas id="barChart"></canvas>
-        <canvas id="pieChart"></canvas>
-    </div>
-    <script>
-        let lineCtx = document.getElementById('lineChart').getContext('2d');
-        new Chart(lineCtx, {
-            type: 'line',
-            data: {
-                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-                datasets: [{
-                    label: "Temperature Trend",
-                    data: [10,20,30,40,50,60,70],
-                    borderColor: 'blue',
-                    fill: false
-                }]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Weekly Line Chart'
-                    }
-                }
-            }
-        });
-
-        let barCtx = document.getElementById('barChart').getContext('2d');
-        new Chart(barCtx, {
-            type:'bar',
-            data: {
-            labels: ['Mon','Tues','Wed','Thurs','Fri','Sat','Sun'],
-            datasets:[{
-                label: "Weekly Bar Chart",
-                data:[10,20,30,40,50,60,70,],
-                backgroundColor:['red','orange','green','yellow','blue','pink','brown'],
-                borderWidth:1
-            }]
-        },
-        options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Weekly Bar Chart'
-                    }
-                }
-            }
-        })
-
-        let pieCtx = document.getElementById('pieChart').getContext('2d');
-        new Chart(pieCtx, {
-            type:'pie',
-            data: {
-            labels: ['Mon','Tues','Wed','Thurs','Fri','Sat','Sun'],
-            datasets:[{
-                data:[10,20,30,40,50,60,70,],
-                backgroundColor:['red','orange','green','yellow','blue','pink','brown'],
-                borderWidth:1
-            }]
-        },
-        options:{
-            plugins:{
-                title:{
-                    display:true,
-                    text:"Pie Chart For Weekly Data"
-                }
-            }
-        }
-        })
-    </script>
-</body>
-</html>
+  <h2>Weekly Weather Dashboard</h2>
+  <div class="dashboard">
+    <div class="card"><h3>Temperature Trend</h3><canvas id="lineChart"></canvas></div>
+    <div class="card"><h3>Rainfall Outlook</h3><canvas id="barChart"></canvas></div>
+    <div class="card"><h3>Weather Conditions</h3><canvas id="pieChart"></canvas></div>
+  </div>
+  <script>
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    
+    // Line Chart (Temp)
+    new Chart(document.getElementById('lineChart'), {
+      type: 'line', 
+      data: {labels: days, datasets: [{label:'Temp (°C)', data:[22,25,24,20,19,23,26], borderColor:'#ff5722', tension:0.3}]}
+    });
+    
+    // Bar Chart (Rain)
+    new Chart(document.getElementById('barChart'), {
+      type: 'bar', 
+      data: {labels: days, datasets: [{label:'Rainfall (mm)', data:[5,0,2,15,20,0,0], backgroundColor:'#03a9f4'}]}
+    });
+    
+    // Pie Chart (Conditions)
+    new Chart(document.getElementById('pieChart'), {
+      type: 'pie', 
+      data: {labels: ['Sunny', 'Cloudy', 'Rainy'], datasets: [{data: [4, 1, 2], backgroundColor: ['#ffc107', '#9e9e9e', '#03a9f4']}]}
+    });
+  </script>
+</body></html>
